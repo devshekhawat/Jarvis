@@ -28,11 +28,14 @@ $response = null;
 
 //set Message
 
-if($messageText == "hi") {
+if($messageText == "hi" || $messageText == "Hi") {
 
 $answer = "Hello";
 
 }
+else{
+  $answer = "kya bol raha h bhen ke lore";
+  }
 
 //send message to facebook bot
 
