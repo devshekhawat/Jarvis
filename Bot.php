@@ -16,6 +16,8 @@ exit;
 
 }
 
+
+
 // handle bot's anwser
 
 $input = json_decode(file_get_contents('php://input'), true);
@@ -26,15 +28,27 @@ $messageText = $input['entry'][0]['messaging'][0]['message']['text'];
 
 $response = null;
 
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/v2.6/'.$senderId.'?fields=first_name,last_name&access_token='.$accessToken);
+$result = curl_exec($ch);
+curl_close($ch);
+$obj = json_decode($result);
+
 //set Message
 
 if($messageText == "hi" || $messageText == "Hi") {
 
-$answer = "Hello";
+$answer = "Hello".$obj['first_name'];
 
 }
 else{
-  $answer = "kya bol raha h bhen ke lore";
+  $answer = "Here are my commands: 
+             weather
+             hi
+             time";
   }
 
 //send message to facebook bot
