@@ -38,7 +38,58 @@ $response = null;
 //$obj = json_decode($result1);
 
 //set Message
-
+switch ($messageText) {
+    case "hi":
+        $answer = "Hello";
+        break;
+    case "Hi":
+        $answer = "Hello";
+        break;
+    case "name":
+        $answer="JARVIS";
+        break;
+    case "Name":
+        $answer="JARVIS";
+        break;
+    case "weather":
+        $answer="Sunny";
+        break;
+    case "Weather":
+        $answer="Sunny";
+        break;
+    case "time":
+        $answer=time();
+        break;
+    case "Time":
+        $answer=time();
+        break;
+    case "creator":
+        $answer="Adeelabs";
+        break;
+    case "Creator":
+        $answer="Adeelabs";
+        break;
+    case "Switch On":
+        $answer="turning ON";
+        break;
+    case "Switch Off":
+        $answer="turning Off";
+        break;
+    case "switch on":
+        $answer="turning ON";
+        break;
+    case "switch off":
+        $answer="turning Off";
+        break;
+    ...
+    default:
+         $answer = "Here are my commands: 
+             weather
+             hi
+             time
+             creator
+             switch on/off";
+}
 if($messageText == "hi" || $messageText == "Hi") {
 
 $answer = "Hello";
