@@ -9,5 +9,5 @@ curl_setopt($cURL, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
 $result = curl_exec($cURL);
 $j =var_dump(json_decode($result));
-echo $j['botsay'];
+echo $j->{'botsay'};
 ?>
