@@ -14,7 +14,7 @@ curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
 ));
 
 $result = curl_exec($cURL);
-echo $result;
+//echo $result;
 $json = json_decode($result, true);
-echo $json['bot_say'];
+echo $json['usersay'];
 ?>
