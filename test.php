@@ -11,3 +11,4 @@ curl_close($ch1);
 $obj = json_decode($result1);
 
 echo $obj['name'];
+?>
