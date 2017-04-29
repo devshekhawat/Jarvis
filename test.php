@@ -10,7 +10,5 @@ curl_setopt($cURL, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
 
 $result = curl_exec($cURL);
-//echo $result;
-$json = json_decode($result);
-echo $json['usersay'];
+
 ?>
