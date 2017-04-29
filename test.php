@@ -8,6 +8,6 @@ curl_setopt($cURL, CURLOPT_URL, $url);
 curl_setopt($cURL, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
 $result = curl_exec($cURL);
-$j =var_dump(json_decode($result));
+$j =json_decode($result);
 echo $j->{'botsay'};
 ?>
