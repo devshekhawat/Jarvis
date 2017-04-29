@@ -7,8 +7,8 @@ $ch1 = curl_init();
 curl_setopt($ch1, CURLOPT_URL, 'http://api.program-o.com/v2/chatbot/?bot_id=6&say=what%20is%20your%20name&convo_id=exampleusage_1231232&format=json');
 $result1 = curl_exec($ch1);
 curl_close($ch1);
-//$obj = json_decode($result1);
+obj = json_decode($result1);
 
-//echo $obj['first_name'];
-echo result1;
+echo $obj['bot_say'];
+
 ?>
