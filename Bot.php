@@ -80,8 +80,7 @@ switch ($messageText) {
         break;
     case "switch off":
         $answer="turning Off";
-        break;
-    ...
+        break;    
     default:
          $answer = "Here are my commands: 
              weather
