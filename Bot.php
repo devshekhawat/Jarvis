@@ -90,17 +90,7 @@ switch ($messageText) {
              creator
              switch on/off";
 }
-if($messageText == "hi" || $messageText == "Hi") {
 
-$answer = "Hello";
-
-}
-else{
-  $answer = "Here are my commands: 
-             weather
-             hi
-             time";
-  }
 
 //send message to facebook bot
 
