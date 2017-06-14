@@ -38,7 +38,7 @@ $response = null;
 //$obj = json_decode($result1);
 
 
-if($messageText == "Open Gate"){ 
+if($messageText == "Open Gate" || $messageText == "open gate" || $messageText == "Open gate"){ 
   
   require('Pusher.php');
 
@@ -52,7 +52,7 @@ if($messageText == "Open Gate"){
     $options
   );
 
-  $data['message'] = 'hello worldkkk';
+  $data = array('message' => 'opengate', 'sender' => $senderId);
   $response = $pusher->trigger('my-channel', 'my-event', $data, null, true);
  
   if($response){
