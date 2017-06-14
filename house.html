@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: auto;
+        padding: 0px;
+		width: 1000px;
+      }
+	  h3{    
+		position: relative;
+		display: block;
+		}
+	  
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1000" height="350"></canvas>
+    <h3 id="a"></h3>
+    <h3 id="b"></h3>
+    <h3 id="x"></h3>
+    <script>
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+      function drawRectangle(GateA, context) {
+        context.beginPath();
+        context.rect(GateA.x, GateA.y, GateA.width, GateA.height);
+        context.fillStyle = '#8ED6FF';
+        context.fill();
+        context.lineWidth = GateA.borderWidth;
+        context.strokeStyle = 'black';
+        context.stroke();
+      }      
+	  
+	  function drawPiller(context, dpx, dpy, dpw, dph) {
+        context.beginPath();
+        context.rect(dpx, dpy, dpw, dph);
+        context.fillStyle = '#5ED6FF';
+        context.fill();
+        context.lineWidth = 4;
+        context.strokeStyle = 'black';
+        context.stroke();
+      }
+      function animate(GateA, canvas, context, startTime) {
+        // update
+        var time = (new Date()).getTime() - startTime;
+
+        var linearSpeed = 100;
+        // pixels / second
+        var newX = (linearSpeed * time / 1000);
+
+       // if(newX < canvas.width - GateA.width - GateA.borderWidth / 2) {
+        if(newX < 210 && GateA.width > 0) {
+          GateA.width = (-newX+200);
+          GateB.x = newX+450;
+          GateB.width = GateA.width;
+        }
+
+        // clear
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawRectangle(GateA, context);
+        drawRectangle(GateB, context);
+		drawPiller(context,215,160,40,115);
+		drawPiller(context,645,160,40,115);
+		
+		tagA = document.getElementById("a");
+		tagA.innerHTML = "GateA.width "+GateA.width;		
+		tagB = document.getElementById("b");
+		tagB.innerHTML = "GateB.width "+GateB.width;
+		tagX = document.getElementById("x");
+		tagX.innerHTML = "newX "+GateB.x;
+		
+        requestAnimFrame(function() {
+          animate(GateA, canvas, context, startTime);
+        });
+      }
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      var GateA = {
+        x: 250,
+        y: 175,
+        width: 200,
+        height: 100,
+        borderWidth: 4
+      };      
+	  var GateB = {
+        x: 450,
+        y: 175,
+        width: 200,
+        height: 100,
+        borderWidth: 4
+      };
+
+	  
+	  
+		drawRectangle(GateA, context);
+		drawRectangle(GateB, context);
+		drawPiller(context,215,160,40,115);
+		drawPiller(context,645,160,40,115);
+      // wait one second before starting animation
+      <!-- setTimeout(function() { -->
+        <!-- var startTime = (new Date()).getTime(); -->
+        <!-- animate(GateA, canvas, context, startTime); -->
+      <!-- }, 1000); -->
+	 function trigger(){ 
+	var startTime = (new Date()).getTime();
+	  animate(GateA, canvas, context, startTime);
+	  }
+    </script>
+  </body>
+</html>      
