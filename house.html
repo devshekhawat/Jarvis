@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+<script src="https://js.pusher.com/4.0/pusher.min.js"></script>
     <style>
       body {
         margin: auto;
@@ -113,6 +114,21 @@
 	var startTime = (new Date()).getTime();
 	  animate(GateA, canvas, context, startTime);
 	  }
+      
+ Pusher.logToConsole = true;
+
+    var pusher = new Pusher('b0ded0eeefc2e4039f6a', {
+      cluster: 'ap2',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      if(data.message == 'opengate'){
+	      trigger();
+      }
+    });
+      
     </script>
   </body>
 </html>      
