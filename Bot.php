@@ -38,14 +38,17 @@ $response = null;
 //$obj = json_decode($result1);
 
 
-
+if($messageText == "Open Gate"){
+  $answer = "Gates opening";
+}
+else{
 $url ="http://api.program-o.com/v2/chatbot/?bot_id=6&say=".$messageText."&convo_id=".$senderId."&format=json";
 
 $result = file_get_contents($url);
 $j =json_decode($result);
 $answer=$j->{'botsay'};
 //send message to facebook bot
-
+}
 $response = [
 
 'recipient' => [ 'id' => $senderId ],
