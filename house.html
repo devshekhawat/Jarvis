@@ -18,8 +18,9 @@
   <body>
     <canvas id="myCanvas" width="1000" height="350"></canvas>
     <h3 id="a"></h3>
-    <h3 id="b"></h3>
-    <h3 id="x"></h3>
+	<h3 id="b"></h3>
+	  <h3 id="x"></h3>
+	  <h3 id="s"></h3>
     <script>
       window.requestAnimFrame = (function(callback) {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -126,6 +127,8 @@
     channel.bind('my-event', function(data) {
       if(data.message == 'opengate'){
 	      trigger();
+	      tagS = document.getElementById("s");
+	tagS.innerHTML = "Sender ID "+data.sender;
       }
     });
       
