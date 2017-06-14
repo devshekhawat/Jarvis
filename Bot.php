@@ -38,8 +38,29 @@ $response = null;
 //$obj = json_decode($result1);
 
 
-if($messageText == "Open Gate"){
-  $answer = "Gates opening";
+if($messageText == "Open Gate"){ 
+  
+  require('Pusher.php');
+
+  $options = array(
+    'cluster' => 'ap2'
+  );
+  $pusher = new Pusher(
+    'b0ded0eeefc2e4039f6a',
+    '6901f8a83a78d9afa6fb',
+    '351431',
+    $options
+  );
+
+  $data['message'] = 'hello worldkkk';
+  $response = $pusher->trigger('my-channel', 'my-event', $data, null, true);
+ 
+  if($response){
+    $answer = "Gates opening";
+  }
+  else{
+    $answer = "Sorry! but i can't now";
+  }
 }
 else{
 $url ="http://api.program-o.com/v2/chatbot/?bot_id=6&say=".$messageText."&convo_id=".$senderId."&format=json";
